@@ -83,7 +83,7 @@ function JobList() {
                   </td>
                   <td>
                     <em style={{ color: "red" }}>
-                      {data.endDate !== undefined ? data.endDate : "?"}
+                      {data.Link_valid_till !== undefined ? data.Link_valid_till : "?"}
                     </em>
                   </td>
                 </tr>
