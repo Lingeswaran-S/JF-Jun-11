@@ -8,14 +8,11 @@ function Read() {
   const { link } = location.state;
   let reqList = [];
   function process() {
-    console.log("pro reach");
-
     for (const key in req) {
       if (key !== "company" && key !== "id" && key !== "regLink") {
         reqList.push([key, req[key]]);
       }
     }
-    console.log(reqList);
   }
   return (
     <React.Fragment>
@@ -32,7 +29,9 @@ function Read() {
             style={{ tableLayout: "fixed" }}
           >
             <thead class="table-danger border">
-              <th colSpan="2">Company : {name}</th>
+              <tr>
+                <th colSpan="2">Company : {name}</th>
+              </tr>
             </thead>
             <tbody class="table table-bordered">
               {reqList.map((data, ind) => (

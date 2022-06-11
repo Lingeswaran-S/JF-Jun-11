@@ -12,7 +12,8 @@ function JobList() {
   function reloadPage() {
     window.location.reload();
   }
-  useEffect(() => {
+  function downloadData() {
+    console.log("downloadData");
     (function readData() {
       axios
         .get("https://6270ca6c6a36d4d62c1d8729.mockapi.io/crud/sample/Test")
@@ -20,10 +21,30 @@ function JobList() {
         // "https://6270ca6c6a36d4d62c1d8729.mockapi.io/crud/sample/users"
         .then((res) => setArrayList(res.data));
     })();
-  });
+  }
+  // downloadData();
+  let [res, setRes] = React.useState(1);
+  useEffect(() => {
+    console.log("Use-Effect-JL");
+    (function readData() {
+      console.log("axios");
+      axios
+        .get("https://6270ca6c6a36d4d62c1d8729.mockapi.io/crud/sample/Test")
+        // https://6270ca6c6a36d4d62c1d8729.mockapi.io/crud/sample/Test
+        // "https://6270ca6c6a36d4d62c1d8729.mockapi.io/crud/sample/users"
+        .then((res) => setArrayList(res.data))
+        .catch(() => {
+          console.log("err");
+          setTimeout(() => {
+            console.log("Time-out");
+            window.location.reload();
+          }, 1500);
+        });
+    })();
+  }, []);
   return (
     <React.Fragment>
-      <div class="container border mt-1 rounded ">
+      <div class="container border mt-1 rounded">
         <Link to="/">
           <button class="btn btn-info mt-3 shadow-lg ">
             <strong class="text-white">Home</strong>
